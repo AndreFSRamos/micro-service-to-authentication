@@ -1,0 +1,46 @@
+server:
+  port: ${SERVER_PORT}
+  ssl:
+    enabled: false
+
+cors:
+  origenPatterns: ${ORIGEN_PATTERNS}
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${HOST_URL_DATABASE}:${PORT_DATABASE}/${DATABASE}?useTimezone=true&serverTimezone=UTC
+    username: ${DATA_BASE_USERNAME}
+    password: ${DATA_BASE_PASS}
+    testOnBorrow: true
+    validationQuery: SELECT 1
+    hikari:
+      maximum-pool-size: 500
+      minimum-idle: 60
+      idle-timeout: 4000
+  jpa:
+    hibernate.ddl-auto: validate
+    generate-ddl: true
+    show-sql: false
+    properties:
+      hibernate.format_sql: true
+      dialect: org.hibernate.dialect.MySQL8Dialect
+
+security:
+  jwt:
+    token:
+      secret-key: ${JWT_SECRET}
+      access-token:
+        expire-length: ${EXPIRE_LENGTH_ACCESS_TOKEN}
+      refresh-token:
+        expire-length: ${EXPIRE_LENGTH_REFRESH_TOKEN}
+
+springdoc:
+  swagger-ui:
+    path: "/swagger-ui.html"
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

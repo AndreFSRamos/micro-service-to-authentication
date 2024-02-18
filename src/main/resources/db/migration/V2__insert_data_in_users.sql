@@ -1,0 +1,2 @@
+INSERT INTO `users` (`user_name`, `password`, `role`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `enabled`, `system_id_user_insert`, `system_date_insert`) VALUES
+('admin', '$2a$10$btKECvQ1NZYqW67KaKnVlen3QRKwu4rrl5Y2XfrJxmZ6atGZkdJMO', 'ADMIN', b'1', b'1', b'1', b'1', b'1', NOW());
