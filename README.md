@@ -2,16 +2,40 @@
 
 ## Descrição
 
-Micro serviço desenvolvido com a linguagem Java e o framework Spring Boot, para autenticar usuários por meio de "username" e "password" e também o "refresh token".
+Micro serviço desenvolvido com a linguagem Java 18 e o framework Spring Boot 3.2.2, para autenticar usuários por meio de "username" e "password" e também o "refresh token".
 O projeto faz uso das bibliotecas JWT, Spring Security e configurações de CORS para garantir a segurança da autenticação, também contém testes de integração usando testcontainers para validar a integridade de cada ponto antes da construção e com uma documentação disponibilizada pelo Swagger-UI.
 
-## Requisitos 
+## Requisitos
+
+### Funcionais
+- RF001: Autenticar com username e password.
+- RF002: Criar novo usuário.
+- RF003: Alterar password.
+- RF004: Alterar perfil do usuário.
+- RF005: Desabilitar/Habilitar usuário.
+- RF006: Buscar todos os usuário.
+- RF007: Buscar usuário por ID.
+- RF008: Deletar usuário pelo ID.
+- RF009: Validar Token.
+- RF010: Reautenticar com refresh token.
+
+### Não Funcionais
+- RNF001: Somente os endpoints de Autenticação e Reautenticação são liberados para qualquer requisição.
+- RNF002: Os perfis de usuário devem ser ADMIN, MANAGER e COMMON, seguindo essa hierarquia.
+- RNF003: Adicionar um usuário ADMIN primário, o qual não deve ser possível desabilitar ou deletar nem alterar o perfil.
+- RNF004: Somente será possível alterar password, perfil e desabilitar um usuário, com outra usuário que tenha o perfil ADMIN.
+- RNF005: Somente os usuário com perfil ADMIN e MANAGER podem criar um novo usuário e efetuar buscas por todos os usuários ou por ID.
+- RNF006: Qual novo usuário criado deve ter seu perfil como COMMON.
+- RNF007: Todos os endpoints com exceção dos endpoints descritos no RNF001, devem somente aceitar requisições com token valido, origem na requisição iguais às predefinidas e com perfil do usuário valido.
+- RNF008: Aplicação deve ter uma documentação para desenvolvedores.
+
+## Recursos Necessários
 
 Para executar a aplicação locamente você vai precisar:
 
 - [JDK 18](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html)
 - [Maven 3.9.6](https://maven.apache.org)
-- [Dokcer](https://www.docker.com/) (OBS: O Docker é usado apenas para executar os testes)
+- [Docker](https://www.docker.com/) (OBS: O Docker é usado apenas para executar os testes)
 - [MySQL 8](https://dev.mysql.com/downloads/mysql/)
 
 ## Rodando a aplicação localmente
