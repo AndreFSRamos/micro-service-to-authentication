@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.sessionId;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,7 +27,7 @@ public class UserControllerTest extends AbstractIntegrationTest {
             "/api/auth/v1/sign-in", // #0
             "/api/user/v1/find-all", //#1
             "/api/user/v1/find-by-id/", //#2
-            "/api/user/v1/sign-out", //#3
+            "/api/user/v1/sign-up", //#3
             "/api/user/v1/update-password", //#4
             "/api/user/v1/update-status/", //#5
             "/api/user/v1/update-role/", //#6

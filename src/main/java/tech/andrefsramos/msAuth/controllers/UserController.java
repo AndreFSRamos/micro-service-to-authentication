@@ -71,9 +71,9 @@ public class UserController {
             @ApiResponse(description = "Internal error", responseCode = "500", content = @Content)
     }
     )
-    @PostMapping("/sign-out")
-    public ResponseEntity<?> signOut(@Valid @RequestBody UserSignOutDTO userSignOutDTO) {
-        return this.userService.signOut(userSignOutDTO);
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> signUp(@Valid @RequestBody UserSignOutDTO userSignOutDTO) {
+        return this.userService.signUp(userSignOutDTO);
     }
 
     @Operation(summary = "Change password a user", description = "Change password a user, authorized only for ADMIN.",

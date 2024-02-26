@@ -35,7 +35,7 @@ public class UserService implements UserDetailsService {
        return userRepository.findByUserNameAndEnabledIsTrue(username).orElseThrow(()-> new UsernameNotFoundException("Username " + username + " not found!"));
     }
 
-    public ResponseEntity<?> signOut(UserSignOutDTO userDTO) {
+    public ResponseEntity<?> signUp(UserSignOutDTO userDTO) {
         userRepository.findByUserName(userDTO.getUserName()).ifPresent(user -> {
             throw new ConstrainException("User informed already exists.");
         });
