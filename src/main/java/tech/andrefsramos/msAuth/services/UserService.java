@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService {
             user.setEnabled(!user.getEnabled());
             userRepository.save(updateUpdateFields(user));
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }).orElseThrow(() -> getException(id, "Changing this user status is not allowed."));
+        }).orElseThrow(() -> getException(id));
     }
 
     public ResponseEntity<?> updateRole(Long id, String role){
@@ -73,7 +73,7 @@ public class UserService implements UserDetailsService {
             user.setRole(userRoleEnum);
             userRepository.save(updateUpdateFields(user));
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }).orElseThrow(() -> getException(id, "Changing this user's role is not allowed."));
+        }).orElseThrow(() -> getException(id));
     }
 
     public ResponseEntity<?> deleteById(Long id){
@@ -81,8 +81,7 @@ public class UserService implements UserDetailsService {
                 .map(user -> {
                     userRepository.deleteById(user.getId());
                     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-                })
-                .orElseThrow(() -> getException(id, "It is not allowed to delete this user."));
+                }).orElseThrow(() -> getException(id));
     }
 
     private Long getSessionUser() {
@@ -92,8 +91,8 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new ResourceNotFoundException("Administrator user has not been localized."));
     }
 
-    private RuntimeException getException(Long id, String textErrorAccess){
-        return id == 1L ? new AccessExcption(textErrorAccess) : new ResourceNotFoundException("User not found!");
+    private RuntimeException getException(Long id){
+        return id == 1L ? new AccessExcption("Changing this user's role is not allowed.") : new ResourceNotFoundException("User not found!");
     }
 
     private User updateUpdateFields(User user){

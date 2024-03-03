@@ -24,18 +24,28 @@ public class User implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String userName;
+
     private String password;
 
     @Enumerated(EnumType.STRING)
     private UserRoleEnum role;
+
     private Date systemDateInsert;
+
     private Long systemIdUserInsert;
+
     private Date systemDateUpdate;
+
     private Long systemIdUserUpdate;
+
     private Boolean accountNonExpired;
+
     private Boolean accountNonLocked;
+
     private Boolean credentialsNonExpired;
+
     private Boolean enabled;
 
     @Override

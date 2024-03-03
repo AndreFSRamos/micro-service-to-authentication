@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `users`
 (
-    `id`                        bigint              NOT NULL AUTO_INCREMENT,
+    `id`                        bigint unsigned     NOT NULL AUTO_INCREMENT,
     `user_name`                 VARCHAR(255) UNIQUE NOT NULL,
     `password`                  VARCHAR(255)        NOT NULL,
     `role`                      ENUM('COMMON', 'MANAGER', 'ADMIN') NOT NULL DEFAULT 'COMMON',

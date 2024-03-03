@@ -75,6 +75,8 @@ public class TokenService {
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
                 .withSubject(user.getUsername())
+                .withClaim("id", user.getId().toString())
+                .withClaim("role", user.getRole().toString())
                 .withIssuer(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString())
                 .sign(algorithm)
                 .strip();
@@ -85,6 +87,8 @@ public class TokenService {
                 .withIssuedAt(now)
                 .withExpiresAt(new Date(new Date().getTime() + REFRESH_TOKEN_VALIDITY_IN_MILLISECOND))
                 .withSubject(user.getUsername())
+                .withClaim("id", user.getId().toString())
+                .withClaim("role", user.getRole().toString())
                 .sign(algorithm)
                 .strip();
     }
